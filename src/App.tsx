@@ -17,7 +17,8 @@ function App() {
     owner_address,
     contract_balance,
     sendIncrement,
-    sendDeposit
+    sendDeposit,
+    sendWithdrawl
   } = useMainContract();
   return (
     <div>
@@ -44,6 +45,16 @@ function App() {
       }}
     >
       Deposit
+    </a>
+    )}
+    <br/>
+    {connected && (
+      <a
+      onClick={() => {
+        sendWithdrawl();
+      }}
+    >
+      Withdraw 1 Ton
     </a>
     )}
     
