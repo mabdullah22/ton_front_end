@@ -8,9 +8,9 @@ export type HelloWorldConfig2 ={
     owner_address: Address
 };
 
-export function helloWorldConfigToCell(config: HelloWorldConfig): Cell {
-    return beginCell().endCell();
-}
+// export function helloWorldConfigToCell(config: HelloWorldConfig): Cell {
+//     return beginCell().endCell();
+// }
 
 // It is going to receive a MainContractConfig type of object, properly pack those parameters into a cell and return it. 
 // We need this because as you remember, the c4 storage is a memory cell:

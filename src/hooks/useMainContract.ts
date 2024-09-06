@@ -27,6 +27,7 @@ export function useMainContract(){
         const contract = new HelloWorld(
             Address.parse("EQCKYYuk0l9Mla7EmX_AuitY4v9Z3JTVwW8leuBMThqaVyu5")
         );
+        // @ts-ignore
         return client.open(contract) as OpenedContract<HelloWorld>;
     }, [client]);
 
@@ -36,7 +37,9 @@ export function useMainContract(){
         async function getValue() {
             if(!mainContract) return;
             setContractData(null);
+            // @ts-ignore
             const val = await mainContract.getData();
+            // @ts-ignore
             const balance  = await client.getBalance(mainContract.address);
             // console.log(balance);
 
@@ -45,6 +48,7 @@ export function useMainContract(){
                 recent_sender: val.recent_sender,
                 owner_address: val.owner_address,
             });
+            // @ts-ignore
             setBalance(balance);
             await sleep(5000);
             getValue();
@@ -60,10 +64,12 @@ export function useMainContract(){
         contract_balance: balance,
         ...contractData,
         sendIncrement: async () => {
+            // @ts-ignore
           return mainContract?.sendIncrement(sender, toNano("0.05"), 3);
         },
 
         sendDeposit: async() =>{
+            // @ts-ignore
             return mainContract?.sendDeposit(sender,toNano("0.05"),3);
         }
     };
