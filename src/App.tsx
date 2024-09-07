@@ -4,6 +4,8 @@ import { useMainContract } from "./hooks/useMainContract";
 import { useTonConnect } from './hooks/useTonConnect';
 import { fromNano } from 'ton-core';
 import WebApp from "@twa-dev/sdk";
+import { MainButton } from '@twa-dev/sdk/react';
+
 
 
 
@@ -20,6 +22,10 @@ function App() {
     sendDeposit,
     sendWithdrawl
   } = useMainContract();
+  const showAlert = () => {
+    WebApp.showAlert("Hey there!");
+  };
+
   return (
     <div>
     <div>
@@ -57,10 +63,19 @@ function App() {
       Withdraw 1 Ton
     </a>
     )}
-    
+
+<a onClick={() => {
+            showAlert();
+          }}
+        >
+          Show Alert
+        </a>
+    <MainButton text="Submit" onClick={() => alert('submitted')} />
+
     <div>
 
       <div className='Card'>
+      <b>{WebApp.platform}</b>
       <b>Our contract Address</b>
           <div className='Hint'>{contract_address?.slice(0, 30) + "..."}</div>
           <b>Our contract Balance</b>
